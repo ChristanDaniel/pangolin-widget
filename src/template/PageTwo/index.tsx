@@ -6,19 +6,19 @@ import { Header } from "../../components/Header"
 import { decrement, increment, RootState, useDispatch, useSelector } from "../../context/pangolinContext";
 // import { decrement, increment } from "../../redux/stoke"
 // import { RootState } from "../../redux"
-// import { useAppDispatch } from "../../redux/hooks"
+// import { useAppDispatch } from "../../redux/hooks"//////
 
 export const PageTwo = () => {
     const dispatch = useDispatch();
-    const stock = useSelector((state: RootState) => state.stock.counter)
+    const stock = useSelector((state: RootState) => state.stock)
+    // const stockk = useSelector((state: RootState) => state)
+    console.log('One', stock)
+    // console.log('Two', stockk)
+    // console.log('dispatch', dispatch(increment()))
 
     return (
         <div>
-            <Header />
-            <Body />
-            <Footer />
-
-            <p>{stock}</p>
+            <p>{stock.counter}</p>
             <button onClick={() => dispatch(increment())}>sum +</button>
             <button onClick={() => dispatch(decrement())}>sub - </button>
         </div>

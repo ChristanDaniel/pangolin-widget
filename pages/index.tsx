@@ -10,6 +10,7 @@ import type {
 } from '@pangolindex/components';
 import { PageOne } from '../src/template/PageOne';
 import { MyProvider } from '../src/context/pangolinContext';
+import { PageTwo } from '../src/template/PageTwo';
 
 const Button = dynamic(() => import('@pangolindex/components').then((module) => module.Button) as any, {
   ssr: false,
@@ -82,27 +83,28 @@ const Home: NextPage = () => {
   }, [web3Modal]);
 
   return (
-        <PangolinProvider account={account} chainId={chainId} library={web3jsProvider}>
-            <div>
-              <Button
-                variant="primary"
-                onClick={() => {
-                  if (account) {
-                    disconnect();
-                  } else {
-                    connectWallet();
-                  }
-                }}
-                width="400px"
-              >
-                {account ? 'Disconnect' : 'Connect'} Wallet
-              </Button>
-              {account && <div className="wallet">{account}</div>}
-              <div style={{ marginTop: '10px', maxWidth: 400 }}>
-                <SwapWidget isLimitOrderVisible={false} />
-              </div>
+      <div>
+          <Button
+            variant="primary"
+            onClick={() => {
+              if (account) {
+                disconnect();
+              } else {
+                connectWallet();
+              }
+            }}
+            width="400px"
+            >
+            {account ? 'Disconnect' : 'Connect'} Wallet
+          </Button>
+          {account && <div className="wallet">{account}</div>}
+          <div style={{ marginTop: '10px', maxWidth: 400 }}>
+            <SwapWidget isLimitOrderVisible={false} />
           </div>
-        </PangolinProvider>
+          {/* <MyProvider> */}
+          <PageTwo />
+          {/* </MyProvider> */}
+      </div>
   )
 }
 

@@ -6,7 +6,9 @@ import { PageTwo } from '../src/template/PageTwo';
 
 const Home: NextPage = () => {
   return (
-    <PageTwo />
+    <MyProvider>
+      <PageTwo />
+    </MyProvider>
   )
 }
 
